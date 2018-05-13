@@ -1,0 +1,26 @@
+{
+  "name": "creditcard-application",
+  "version": "1.0.0",
+  "description": "CRUD Credit Card",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "RESTful",
+    "Node.js",
+    "javascript"
+  ],
+  "author": "KAMALPREET SINGH",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^4.13.9",
+    "restify": "4.1.1",
+    "save": "2.3.0"
+  },
+  "engines": {
+    "node": "8.4.0",
+    "npm": "5.5.1"
+  }
+}

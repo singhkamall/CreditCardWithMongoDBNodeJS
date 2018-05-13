@@ -29,11 +29,10 @@ mongoose.connect(uristring, function (err, res) {
 
 var credditCardSchema = new mongoose.Schema({
   CampaignID: String, 
-  AccountHolderName: String, 
-  AccountNumber: String,
-  BankName: String,
-  BranchName: String,
-  BranchAddress: String,
+  NameOnCard: String, 
+  CardNumber: String,
+  ExpiryDate: String,
+  SecurityCode: String,
   PostalCode: String
 });
 
@@ -161,26 +160,23 @@ server.del('/creditcards/:id', function (req, res, next) {
 
 //#region  PRIVATE METHODS
 function getCreditCardData(req){
-  // Make sure CampaignID, AccountHolderName, AccountNumber, 
-  // BankName, BranchName, BranchAddress and PostalCode 
+  // Make sure CampaignID, NameOnCard, CardNumber, 
+  // ExpiryDate, SecurityCode and PostalCode 
   // are defined
   if (req.params.CampaignID === undefined) {
     throw new Error('CampaignID must be supplied')
   }
-  if (req.params.AccountHolderName === undefined) {
-    throw new Error('AccountHolderName must be supplied')
+  if (req.params.NameOnCard === undefined) {
+    throw new Error('NameOnCard must be supplied')
   }
-  if (req.params.AccountNumber === undefined) {
-    throw new Error('AccountNumber must be supplied')
+  if (req.params.CardNumber === undefined) {
+    throw new Error('CardNumber must be supplied')
   }
-  if (req.params.BankName === undefined) {
-    throw new Error('BankName must be supplied')
+  if (req.params.ExpiryDate === undefined) {
+    throw new Error('ExpiryDate must be supplied')
   }
-  if (req.params.BranchName === undefined) {
-    throw new Error('BranchName must be supplied')
-  }
-  if (req.params.BranchAddress === undefined) {
-    throw new Error('BranchAddress must be supplied')
+  if (req.params.SecurityCode === undefined) {
+    throw new Error('SecurityCode must be supplied')
   }
   if (req.params.PostalCode === undefined) {
     throw new Error('PostalCode must be supplied')
@@ -188,11 +184,10 @@ function getCreditCardData(req){
 
   let newCC = new CreditCard({
 		CampaignID: req.params.CampaignID, 
-    AccountHolderName: req.params.AccountHolderName,
-    AccountNumber: req.params.AccountNumber,
-    BankName: req.params.BankName,
-    BranchName: req.params.BranchName,
-    BranchAddress: req.params.BranchAddress,
+    NameOnCard: req.params.NameOnCard,
+    CardNumber: req.params.CardNumber,
+    ExpiryDate: req.params.ExpiryDate,
+    SecurityCode: req.params.SecurityCode,
     PostalCode: req.params.PostalCode
   });
 
